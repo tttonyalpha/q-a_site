@@ -11,7 +11,7 @@ database = stepic_web
 ```
 # Running database
 git clone https://github.com/tttonyalpha/stepic_web_project 
-
+```
 sudo apt update  
 
 sudo apt install python3.5 -y  
@@ -30,4 +30,5 @@ mysql -uroot -e "GRANT ALL PRIVILEGES ON stepic_web.* TO 'box'@'localhost' WITH 
 
 python3 manage.py makemigrations qa  
 python3 manage.py migrate  
+```
 
