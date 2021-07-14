@@ -3,13 +3,13 @@ My Stepik web project, _started at 23.05.21_
 # Gunicorn start up
 in /home/box/web/ask: ```gunicorn -c ../etc/gunicorn.conf --access-logfile acc.log --error-logfile err.log ask.wsgi:application```
 
-
+# MySQL configuration
 don't forget to add in /etc/mysql/my.cnf 
 ```
 [client]  
 database = stepic_web
 ```
-# running database
+# Running database
 git clone https://github.com/tttonyalpha/stepic_web_project 
 
 sudo apt update  
