@@ -15,9 +15,7 @@ git clone https://github.com/tttonyalpha/stepic_web_project
 sudo apt update  
 
 sudo apt install python3.5 -y  
-
 sudo apt install python3.5-dev -y  
-
 sudo unlink /usr/bin/python3  
 
 sudo ln -s /usr/bin/python3.5 /usr/bin/python3  
