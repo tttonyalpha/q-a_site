@@ -4,8 +4,7 @@ My Stepik web project, _started at 05.23.21_
 in /home/box/web/ask: ```gunicorn -c ../etc/gunicorn.conf --access-logfile acc.log --error-logfile err.log ask.wsgi:application```
 
 
-don't forget: in /etc/mysql/my.cnf
-add: 
+don't forget to add in /etc/mysql/my.cnf 
 ```
 [client]  
 database = stepic_web
