@@ -10,8 +10,8 @@ don't forget to add in /etc/mysql/my.cnf
 database = stepic_web
 ```
 # Running database
-git clone https://github.com/tttonyalpha/stepic_web_project 
 ```
+git clone https://github.com/tttonyalpha/stepic_web_project 
 sudo apt update  
 
 sudo apt install python3.5 -y  
