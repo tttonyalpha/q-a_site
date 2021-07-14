@@ -6,5 +6,5 @@ in /home/box/web/ask: ```gunicorn -c ../etc/gunicorn.conf --access-logfile acc.l
 
 don't forget: in /etc/mysql/my.cnf
 add: 
-```[client]
+```[client]  
 database = stepic_web
