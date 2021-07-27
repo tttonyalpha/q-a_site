@@ -18,12 +18,5 @@ from django.urls import path, include
 import qa.urls
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include(qa.urls)),
-    path('login/', include(qa.urls)),
-    path('signup/', include(qa.urls)),
-    path('question/<id>/', include(qa.urls)),
-    path('ask/', include(qa.urls)),
-    path('popular/', include(qa.urls)),
-    path('new/', include(qa.urls))
+    path("", include(qa.urls))
 ]

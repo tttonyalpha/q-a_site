@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
+  <body class="bg-info">
+    <div class="container">
+      {% for item in questions %}
+        <p>Title: {{item.title}} Text: {{item.text}}<a href="/question/{{item.id}}">
+        {{item.id}}</a></p>
+      {% endfor %}
+      <h1>{{answer.text}}</h1>
+    </div>
+    <nav><table class="pagination">
+    {% for p in paginator.page_range %}
+      {% if p.number == page.number %}
+        <tr class="active">
+      {% else %}
+        <tr>
+      {% endif %}
+      <a href="{{ paginator.baseurl }}{{ p }}">
+        {{ p }}</a>
+      </tr>
+    {% endfor %}
+    </table></nav>
+  </body>
+</html>
+

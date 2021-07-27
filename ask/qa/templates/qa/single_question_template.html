@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
+  <body class="bg-info">
+    <div class="container">
+      <p><h1>{{id}}</h1></p>
+      <p>Title: {{question.title}} Text: {{question.text}}</p>
+      {% for item in answers %}
+        <p>Answer: {{item.text}}</p>
+      {% endfor %}
+    </div>
+  </body>
+</html>
+
