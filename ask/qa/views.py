@@ -67,6 +67,7 @@ def new_questions_list(request, *args, **kwargs):
 
 
 def single_question(request, id):
+    user = User.objects.get(username='Nikk')
     try:
         question = Question.objects.get(id=id)
     except Question.DoesNotExist:
@@ -75,20 +76,28 @@ def single_question(request, id):
 
     if request.method == 'POST':
         form = AnswerForm(request.POST)
+        #form.question_id = id
         if form.is_valid():
-            answer = form.save(question)
+            ans = form.save(commit=False)
+            ans.question = question
+            ans.author = user
+            ans.save()
             #url = question.get_url()
             return HttpResponseRedirect('/question/' + str(id))
     else:
         form = AnswerForm()
+        #form.question_id = id
     return render(request, 'single_question_template.html', {'question': question, 'answers': answers, 'form': form})
 
 
 def ask(request, *args, **kwargs):
+    user = User.objects.get(username='Nikk')
     if request.method == 'POST':
         form = AskForm(request.POST)
         if form.is_valid():
-            question = form.save()
+            question = form.save(commit=False)
+            question.author = user
+            question.save()
             #url = question.get_url()
             return HttpResponseRedirect('/question/' + str(question.id))
     else:
