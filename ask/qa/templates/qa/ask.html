@@ -2,22 +2,14 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
   <body class="bg-info">
     {% include 'qa/navbar.html' %}
-    <div class="container">
-      <p><h1>{{question.id}}</h1></p>
-      <p>Title: {{question.title}} Text: {{question.text}}</p>
-      {% for item in answers %}
-        <p>Answer: {{item.text}}</p>
-      {% endfor %}
-    </div>
     <div>
       {% for e in form.non_field_errors %}
         <div class="alert alert-danger">{{ e }}</div>
       {% endfor %}
-      <form class="form-horizontal" method="post" action="/question/{{question.id}}/">{% csrf_token %}
+      <form class="form-horizontal" method="post" action="/ask/">{% csrf_token %}
         <fieldset>
           {% for field in form %}
             <div class="control-group
@@ -31,6 +23,9 @@
           <button type="submit" class="btn btn-primary">
           Сохранить</button>
         </div>
+    </div>
   </body>
 </html>
+
+
 

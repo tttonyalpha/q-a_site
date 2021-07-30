@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import QuestionManager, Question, Answer
-from .forms import CreateNewQuestion
+#from .forms import CreateNewQuestion
+from .forms import AskForm, AnswerForm
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
@@ -58,7 +59,7 @@ def new_questions_list(request, *args, **kwargs):
     limit = 10
     page = request.GET.get('page', 1)
     paginator = Paginator(questions, limit)
-    paginator.baseurl = '/new/?page='
+    paginator.baseurl = '/?page='
     page = paginator.page(page)
     #answer = Answer(text='helllo!', question=questions[0], author=user)
     # answer.save()
@@ -71,11 +72,28 @@ def single_question(request, id):
     except Question.DoesNotExist:
         return HttpResponse('<p><h1>Question does not exist</h1></p>', status=404)
     answers = Answer.objects.filter(question_id=id)
-    return render(request, 'single_question_template.html', {'question': question, 'answers': answers})
+
+    if request.method == 'POST':
+        form = AnswerForm(request.POST)
+        if form.is_valid():
+            answer = form.save(question)
+            #url = question.get_url()
+            return HttpResponseRedirect('/question/' + str(id))
+    else:
+        form = AnswerForm()
+    return render(request, 'single_question_template.html', {'question': question, 'answers': answers, 'form': form})
 
 
 def ask(request, *args, **kwargs):
-    pass
+    if request.method == 'POST':
+        form = AskForm(request.POST)
+        if form.is_valid():
+            question = form.save()
+            #url = question.get_url()
+            return HttpResponseRedirect('/question/' + str(question.id))
+    else:
+        form = AskForm()
+    return render(request, 'ask.html', {'form': form})
 
 
 def signup(request, *args, **kwargs):

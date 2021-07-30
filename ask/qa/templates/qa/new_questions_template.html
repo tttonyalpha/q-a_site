@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="ru">
   <head>
@@ -5,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
   <body class="bg-info">
+    {% include 'qa/navbar.html' %}
     <div class="container">
       {% for item in questions %}
         <p>Title: {{item.title}} Text: {{item.text}}<a href="/question/{{item.id}}">
@@ -26,4 +28,3 @@
     </table></nav>
   </body>
 </html>
-

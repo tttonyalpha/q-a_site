@@ -6,6 +6,7 @@
   </head>
   <body class="bg-info">
     <div class="container">
+      {% include 'qa/navbar.html' %}
       {% for item in questions %}
         <p>Title: {{item.title}} Text: {{item.text}} Rating {{item.rating}}<a href="/question/{{item.id}}">
         {{item.id}}</a></p>
@@ -26,4 +27,3 @@
     </table></nav>
   </body>
 </html>
-
