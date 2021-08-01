@@ -31,3 +31,8 @@ mysql -uroot -e "GRANT ALL PRIVILEGES ON stepic_web.* TO 'box'@'localhost' WITH 
 python3 manage.py makemigrations qa  
 python3 manage.py migrate  
 ```
+# Nginx logs 
+in /var/log/nginx
+
+# Don't forget to create User!
+python3 manage.py createsuperuser

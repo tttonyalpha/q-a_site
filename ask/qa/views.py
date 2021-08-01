@@ -29,7 +29,7 @@ def index(request, *args, **kwargs):
 def new_questions(request, *args, **kwargs):
     #user = User.objects.create_user(username='Nikk', password='1234')
     # user.save()
-    user = User.objects.get(username='Nikk')
+    user = User.objects.get(pk=1)
     # q1 = Question(title='test_title_' + str(i), text='test_text_' + str(i),
     #              rating=8, author=user)
     # q1.save()
@@ -41,7 +41,7 @@ def new_questions(request, *args, **kwargs):
 
 
 def popular_questions_list(request, *args, **kwargs):
-    user = User.objects.get(username='Nikk')
+    user = User.objects.get(pk=1)
     questions = Question.objects.popular()
     limit = 10
     page = request.GET.get('page', 1)
@@ -54,7 +54,7 @@ def popular_questions_list(request, *args, **kwargs):
 
 
 def new_questions_list(request, *args, **kwargs):
-    user = User.objects.get(username='Nikk')
+    user = User.objects.get(pk=1)
     questions = Question.objects.new()
     limit = 10
     page = request.GET.get('page', 1)
@@ -67,7 +67,7 @@ def new_questions_list(request, *args, **kwargs):
 
 
 def single_question(request, id):
-    user = User.objects.get(username='Nikk')
+    user = User.objects.get(pk=1)
     try:
         question = Question.objects.get(id=id)
     except Question.DoesNotExist:
@@ -85,13 +85,13 @@ def single_question(request, id):
             #url = question.get_url()
             return HttpResponseRedirect('/question/' + str(id))
     else:
-        form = AnswerForm()
+        form = AnswerForm(initial={'question': question.id})
         #form.question_id = id
     return render(request, 'single_question_template.html', {'question': question, 'answers': answers, 'form': form})
 
 
 def ask(request, *args, **kwargs):
-    user = User.objects.get(username='Nikk')
+    user = User.objects.get(pk=1)
     if request.method == 'POST':
         form = AskForm(request.POST)
         if form.is_valid():
@@ -114,7 +114,7 @@ def login(request, *args, **kwargs):
 
 
 def create(request, *args, **kwargs):
-    user = User.objects.get(username='Nikk')
+    user = User.objects.get(pk=1)
     if request.method == 'POST':
         form = CreateNewQuestion(response.POST)
 
