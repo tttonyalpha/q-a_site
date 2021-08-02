@@ -2,7 +2,8 @@
 My Stepik web project, _started at 23.05.21_
 # Gunicorn start up
 in /home/box/web/ask: ```gunicorn -c ../etc/gunicorn.conf ask.wsgi:application```
-
+# Nginx restart 
+```sudo /etc/init.d/nginx restar```
 # MySQL configuration
 don't forget to add in /etc/mysql/my.cnf 
 ```
